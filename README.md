@@ -55,7 +55,7 @@ It is up to you to define the methods in `Location`, however you will need a way
 
 ### Submission Requirements
 
-1. Use the following link to create your private github repository for this assignment. The repository will be seeded with the skeleton code, test cases, and input files. [Homework 3]()
+1. Use the following link to create your private github repository for this assignment. The repository will be seeded with the skeleton code, test cases, and input files. [Homework 3](https://classroom.github.com/a/7bww1zhv)
 2. For full credit, make sure to follow all [Style Guidelines](https://github.com/CS514-F17/notes/blob/master/Admin/style.md). Points will be deducted for each violation.
 
 ### Grading Rubric
