@@ -12,15 +12,20 @@ public class Trip {
 
 	/**
 	 * TODO: Declare data members
-	 * At minimum, data members should include:
+	 * Minimum
 	 *  - rider
 	 *  - start location
 	 *  - end location
 	 * 	- start time
 	 *  - end time
-	 *  see https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html
+	 *  //see https://docs.oracle.com/javase/8/docs/api/java/time/LocalDateTime.html
 	 */
-	
+	private Rider rider; 
+	private Location startLocation;
+	private Location endLocation;
+	private LocalDateTime startTime;
+	private LocalDateTime endTime;
+
 	/**
 	 * Create a new Trip for a given Rider.
 	 * @param rider
@@ -30,7 +35,11 @@ public class Trip {
 	 * @param endTime
 	 */
 	public Trip(Rider rider, Location startLocation, Location endLocation, LocalDateTime startTime, LocalDateTime endTime) {
-		//TODO: Replace with your code.
+		this.rider = rider;
+		this.startLocation = startLocation;
+		this.endLocation = endLocation;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}
 
 	/**
@@ -45,7 +54,11 @@ public class Trip {
 	 * @param endTime
 	 */
 	public Trip(String first, String last, String ccnum, Location startLocation, Location endLocation, LocalDateTime startTime, LocalDateTime endTime) {
-		//TODO: Replace with your code.
+		this.rider = new Rider(first, last, ccnum);
+		this.startLocation = startLocation;
+		this.endLocation = endLocation;
+		this.startTime = startTime;
+		this.endTime = endTime;
 	}	
 
 	/**
@@ -53,8 +66,7 @@ public class Trip {
 	 * @return
 	 */
 	public String getFirstName() {
-		//TODO: Replace with your code.
-		return null;
+		return rider.getFirst();
 	}
 	
 	/**
@@ -62,8 +74,7 @@ public class Trip {
 	 * @return
 	 */
 	public String getLastName() {
-		//TODO: Replace with your code.
-		return null;
+		return rider.getLast();
 	}
 	
 	/**
@@ -75,8 +86,7 @@ public class Trip {
 	 * @return
 	 */
 	public double getDistanceTraveled() {
-		//TODO: Replace with your code.
-		return 0;
+		return startLocation.getDistance(endLocation);
 	}
 
 	/**
@@ -85,8 +95,7 @@ public class Trip {
 	 * @return
 	 */
 	public int getDuration() {
-		//TODO: Replace with your code.
-		return 0;
+		return (int)((Duration.between(startTime, endTime)).getSeconds()/60);
 	}
 	
 	/**
@@ -103,7 +112,21 @@ public class Trip {
 	 * @return
 	 */
 	public boolean updateCCNumber(String newCC) {
-		//TODO: Replace with your code.
-		return false;
-	}	
+		return rider.setCC(newCC);
+	}
+
+	//helper variables for testing
+	private static double latUSF = 37.7753657;
+	private static double lonUSF = -122.4500313;
+
+	private static double latSARA = 36.9832373;
+	private static double lonSARA = -121.9496012;
+
+	public static void main(String[] args) {
+		Trip t1 = new Trip("bob", "smith", "1234567891212", 
+				new Location(latUSF, lonUSF), new Location(latSARA, lonSARA),
+				LocalDateTime.of(2017, 07, 18, 16, 10, 0), LocalDateTime.of(2017, 07, 19, 16, 30, 0));
+		System.out.println(t1.getDistanceTraveled());
+	}
+	
 }
